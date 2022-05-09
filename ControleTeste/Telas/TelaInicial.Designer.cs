@@ -173,7 +173,7 @@
             this.grafReceita.Size = new System.Drawing.Size(318, 277);
             this.grafReceita.TabIndex = 2;
             this.grafReceita.Text = "chart1";
-            this.grafReceita.Click += new System.EventHandler(this.grafReceita_Click);
+            
             // 
             // grafDespesa
             // 

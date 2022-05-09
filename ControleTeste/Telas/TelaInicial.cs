@@ -55,7 +55,7 @@ namespace ControleTeste.Telas
             panelValorDespesa.BackColor = Temas.ChangeColorBrightness(Temas.CorPrimaria, 0.8);
 
         }
-
+        //calcular valor total receitas e despesas
         private void CalcularValorTotal(List<Receita> receita, List<Despesa> despesa)
         {
             foreach (Receita receit in receita)
@@ -67,6 +67,7 @@ namespace ControleTeste.Telas
                 valorTotal += despes.Valor;
             }
         }
+        //calcular valor total receitas
         private void CalcularTotalReceita(List<Receita> receita)
         {
             foreach (Receita receit in receita)
@@ -74,6 +75,7 @@ namespace ControleTeste.Telas
                 valorReceita += receit.Valor;
             }
         }
+        //calcular valor total despesas
         private void CalcularTotalDespesa(List<Despesa> despesa)
         {
             foreach (Despesa despes in despesa)
@@ -81,7 +83,7 @@ namespace ControleTeste.Telas
                 valorDespesas += despes.Valor;
             }
         }
-
+        //chamada de funcoes para carregamento de dados de acordo com a seleção
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 0)
@@ -121,7 +123,7 @@ namespace ControleTeste.Telas
                 CarregarValores();
             }
         }
-
+        //carregar valores nas labels
         private void CarregarValores()
         {
             if (valorTotal > 0)
@@ -142,15 +144,15 @@ namespace ControleTeste.Telas
             lblValorDespesa.ForeColor = Color.Red;
             lblValorDespesa.Text = $"R$ {valorDespesas:F2}";
         }
-
+        //resetar valores para 0, para nas chamadas das funcoes não haja valores somados indevidamente
         private void ResetValores()
         {
             valorTotal = 0;
             valorReceita = 0;
             valorDespesas = 0;
         }
-
-        private void CarregarGraficoReceita(List<Receita> receitas)   
+        //carrega o grafico com dados das receitas
+        private void CarregarGraficoReceita(List<Receita> receitas)
         {
             grafReceita.Series.Clear();
             string[] rece = Enum.GetNames(typeof(CategoriasReceitas));
@@ -161,14 +163,15 @@ namespace ControleTeste.Telas
             for (int i = 0; i < receitas.Count; i++)
             {
                 grafReceita.Series[receitas[i].Categoria.ToString()].Points.AddXY("Receitas", receitas[i].Valor);
-                
+
             }
-          
-        }
+
+        } 
+        //carrega o grafico com dados das despesas
         private void CarregarGraficoDespesas(List<Despesa> despesas)
         {
             grafDespesa.Series.Clear();
-    
+
             string[] rece = Enum.GetNames(typeof(CategoriasDespesas));
             foreach (string recei in rece)
             {
@@ -182,9 +185,6 @@ namespace ControleTeste.Telas
 
         }
 
-        private void grafReceita_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

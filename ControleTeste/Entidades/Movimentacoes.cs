@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ControleTeste.Entidades
-{
+{// classe pai das entidades receitas e despesas
     public abstract class Movimentacoes
     {
         public string Nome { get; set; }

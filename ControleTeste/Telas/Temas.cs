@@ -5,8 +5,10 @@ namespace ControleTeste.Telas
 {
     public static class Temas
     {
+        //atributos
         public static Color CorPrimaria { get; set; }
         public static Color CorSecundaria { get; set; }
+        //array com dados de cores em hexadecimal
         public static List<string> ColorList = new List<string>() { "#3F51B5",
                                                                     "#009688",
                                                                     "#FF5722",
@@ -34,12 +36,14 @@ namespace ControleTeste.Telas
                                                                     "#43B76E",
                                                                     "#7BCFE9",
                                                                     "#B71C46"};
+
+        //metodo para alterar o brilho da cor
         public static Color ChangeColorBrightness(Color color, double correctionFactor)
         {
             double red = color.R;
             double green = color.G;
             double blue = color.B;
-            //If correction factor is less than 0, darken color.
+            //se o fator de correcao for menor que 0 , cores mais escuras.
             if (correctionFactor < 0)
             {
                 correctionFactor = 1 + correctionFactor;
@@ -47,7 +51,7 @@ namespace ControleTeste.Telas
                 green *= correctionFactor;
                 blue *= correctionFactor;
             }
-            //If correction factor is greater than zero, lighten color.
+            //se o fator de correcao for maior que 0 , cores mais claras.
             else
             {
                 red = (255 - red) * correctionFactor + red;

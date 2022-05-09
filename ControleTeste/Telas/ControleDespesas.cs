@@ -8,14 +8,15 @@ using System.Windows.Forms;
 namespace ControleTeste.Telas
 {
     public partial class ControleDespesas : Form
-    {
+    {//atributo
         private List<Despesa> Despesas = new List<Despesa>();
+        //construtor
         public ControleDespesas(List<Despesa> despesas)
         {
             InitializeComponent();
             Despesas = despesas;
         }
-
+        //carregamento do form
         private void ControleDespesas_Load(object sender, EventArgs e)
         {
             string[] elemCategoria = Enum.GetNames(typeof(CategoriasDespesas));
@@ -34,6 +35,7 @@ namespace ControleTeste.Telas
             }
 
         }
+        //carrega tema aos botões
         private void CarregarTema()
         {
             foreach (Control btns in this.Controls)
@@ -49,6 +51,7 @@ namespace ControleTeste.Telas
                 }
             }
         }
+        //metodo para atualizar lista 
         private void CarregarLista()
         {
             ltbDespesas.Items.Clear();
@@ -58,6 +61,7 @@ namespace ControleTeste.Telas
             }
 
         }
+        //limpar os campos
         private void LimparCampos()
         {
             txtNomeDespesa.Text = null;
@@ -65,7 +69,7 @@ namespace ControleTeste.Telas
             dttDespesa.Text = null;
             btnAdicionar.Enabled = true;
         }
-
+        //ação de remover 
         private void btnRemover_Click(object sender, EventArgs e)
         {
             try
@@ -85,7 +89,7 @@ namespace ControleTeste.Telas
             }
 
         }
-
+        //ação de atualizar
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             try
@@ -110,7 +114,7 @@ namespace ControleTeste.Telas
                 LimparCampos();
             }
         }
-
+        //botao selecionar para carregar os campos para atualizar
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             Despesa despesa = ltbDespesas.SelectedItem as Despesa;
@@ -119,12 +123,12 @@ namespace ControleTeste.Telas
             dttDespesa.Value = despesa.Data;
             cbbCategorias.SelectedIndex = (int)despesa.Categoria;
         }
-
+        //limpar campos
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparCampos();
         }
-
+        //ação para adicionar
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             try
@@ -153,7 +157,7 @@ namespace ControleTeste.Telas
             }
 
         }
-
+        //ação para buscar por parte do nome
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             List<Despesa> despesas = Despesa.Buscar(Despesas, txtBusca.Text);
@@ -171,7 +175,7 @@ namespace ControleTeste.Telas
                 txtBusca.Text = null;
             }
         }
-
+        //carregar os dados para atualizar atraves de double click
         private void ltbDespesas_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
             Despesa despesa = ltbDespesas.SelectedItem as Despesa;
@@ -185,7 +189,7 @@ namespace ControleTeste.Telas
             btnBuscar.Enabled = true;
             btnAdicionar.Enabled = false;
         }
-
+        //ativar botoes de acordo com seleção
         private void ltbDespesas_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             btnRemover.Enabled = true;
