@@ -1,0 +1,15 @@
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\bin\Debug\ControleTeste.exe.config
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\bin\Debug\ControleTeste.exe
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\bin\Debug\ControleTeste.pdb
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.csproj.AssemblyReference.cache
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.csproj.SuggestedBindingRedirects.cache
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Form1.resources
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Properties.Resources.resources
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.csproj.GenerateResource.cache
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.csproj.CoreCompileInputs.cache
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.exe
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.pdb
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Telas.ControleReceitas.resources
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Telas.ControleDespesas.resources
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Telas.CtrlMovimentacoes.resources
+C:\temp\ws-vs2022\ControleTeste\ControleTeste\obj\Debug\ControleTeste.Telas.TelaInicial.resources
