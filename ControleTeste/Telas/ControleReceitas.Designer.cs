@@ -43,6 +43,8 @@
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.ltbReceitas = new System.Windows.Forms.ListBox();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.txtBusca = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.form1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
@@ -53,7 +55,7 @@
             // 
             this.btnAtualizar.FlatAppearance.BorderSize = 0;
             this.btnAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizar.Location = new System.Drawing.Point(582, 270);
+            this.btnAtualizar.Location = new System.Drawing.Point(594, 278);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(117, 51);
             this.btnAtualizar.TabIndex = 19;
@@ -65,7 +67,7 @@
             // 
             this.btnRemover.FlatAppearance.BorderSize = 0;
             this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemover.Location = new System.Drawing.Point(582, 199);
+            this.btnRemover.Location = new System.Drawing.Point(594, 207);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(117, 51);
             this.btnRemover.TabIndex = 18;
@@ -77,7 +79,7 @@
             // 
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.Location = new System.Drawing.Point(582, 127);
+            this.btnAdicionar.Location = new System.Drawing.Point(594, 135);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(117, 51);
             this.btnAdicionar.TabIndex = 17;
@@ -90,15 +92,15 @@
             this.cbbCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbCategorias.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCategorias.FormattingEnabled = true;
-            this.cbbCategorias.Location = new System.Drawing.Point(414, 80);
+            this.cbbCategorias.Location = new System.Drawing.Point(404, 87);
             this.cbbCategorias.Name = "cbbCategorias";
-            this.cbbCategorias.Size = new System.Drawing.Size(144, 32);
+            this.cbbCategorias.Size = new System.Drawing.Size(166, 32);
             this.cbbCategorias.TabIndex = 16;
             // 
             // txtValor
             // 
             this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(77, 82);
+            this.txtValor.Location = new System.Drawing.Point(89, 90);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(129, 29);
             this.txtValor.TabIndex = 13;
@@ -107,7 +109,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(318, 85);
+            this.label4.Location = new System.Drawing.Point(308, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 24);
             this.label4.TabIndex = 14;
@@ -117,7 +119,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 85);
+            this.label3.Location = new System.Drawing.Point(23, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 24);
             this.label3.TabIndex = 15;
@@ -128,16 +130,16 @@
             this.dttReceita.CustomFormat = "dd/MM/yyyy";
             this.dttReceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dttReceita.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dttReceita.Location = new System.Drawing.Point(414, 34);
+            this.dttReceita.Location = new System.Drawing.Point(404, 42);
             this.dttReceita.Name = "dttReceita";
-            this.dttReceita.Size = new System.Drawing.Size(144, 29);
+            this.dttReceita.Size = new System.Drawing.Size(166, 29);
             this.dttReceita.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(361, 37);
+            this.label2.Location = new System.Drawing.Point(351, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 24);
             this.label2.TabIndex = 12;
@@ -146,7 +148,7 @@
             // txtNomeReceita
             // 
             this.txtNomeReceita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeReceita.Location = new System.Drawing.Point(77, 34);
+            this.txtNomeReceita.Location = new System.Drawing.Point(89, 42);
             this.txtNomeReceita.Name = "txtNomeReceita";
             this.txtNomeReceita.Size = new System.Drawing.Size(237, 29);
             this.txtNomeReceita.TabIndex = 10;
@@ -155,7 +157,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 37);
+            this.label1.Location = new System.Drawing.Point(23, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 24);
             this.label1.TabIndex = 9;
@@ -164,7 +166,7 @@
             // btnSelecionar
             // 
             this.btnSelecionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.Location = new System.Drawing.Point(582, 362);
+            this.btnSelecionar.Location = new System.Drawing.Point(594, 370);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.Size = new System.Drawing.Size(117, 33);
             this.btnSelecionar.TabIndex = 21;
@@ -177,22 +179,41 @@
             this.ltbReceitas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ltbReceitas.FormattingEnabled = true;
             this.ltbReceitas.ItemHeight = 24;
-            this.ltbReceitas.Location = new System.Drawing.Point(77, 127);
+            this.ltbReceitas.Location = new System.Drawing.Point(27, 135);
             this.ltbReceitas.Name = "ltbReceitas";
-            this.ltbReceitas.Size = new System.Drawing.Size(481, 268);
+            this.ltbReceitas.Size = new System.Drawing.Size(543, 268);
             this.ltbReceitas.TabIndex = 22;
+            this.ltbReceitas.SelectedIndexChanged += new System.EventHandler(this.ltbReceitas_SelectedIndexChanged_1);
             this.ltbReceitas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ltbReceitas_MouseDoubleClick_1);
             // 
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.Location = new System.Drawing.Point(582, 46);
+            this.btnLimpar.Location = new System.Drawing.Point(594, 54);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(117, 51);
             this.btnLimpar.TabIndex = 23;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // txtBusca
+            // 
+            this.txtBusca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusca.Location = new System.Drawing.Point(27, 409);
+            this.txtBusca.Name = "txtBusca";
+            this.txtBusca.Size = new System.Drawing.Size(199, 26);
+            this.txtBusca.TabIndex = 24;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(232, 409);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(83, 26);
+            this.btnBuscar.TabIndex = 25;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // form1BindingSource
             // 
@@ -206,7 +227,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 438);
+            this.ClientSize = new System.Drawing.Size(738, 461);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.txtBusca);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.ltbReceitas);
             this.Controls.Add(this.btnSelecionar);
@@ -221,6 +244,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeReceita);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(754, 500);
+            this.MinimumSize = new System.Drawing.Size(754, 500);
             this.Name = "ControleReceitas";
             this.Text = "Controle Receitas";
             this.Load += new System.EventHandler(this.ControleReceitas_Load);
@@ -249,5 +274,7 @@
         private System.Windows.Forms.BindingSource form1BindingSource1;
         private System.Windows.Forms.ListBox ltbReceitas;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

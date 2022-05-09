@@ -15,8 +15,8 @@ namespace ControleTeste
         private Random random;
         private int tempIndex;
         private Form activeForm;
-        List<Despesa> despesas = new List<Despesa>();
-        List<Receita> receitas = new List<Receita>();
+        private List<Despesa> despesas = new List<Despesa>();
+        private  List<Receita> receitas = new List<Receita>();
         CalculosReceita CalculosReceita;
 
         public Form1()
@@ -107,7 +107,7 @@ namespace ControleTeste
         private void btnHome_Click(object sender, EventArgs e)
         {
             
-            OpenChildForm(new TelaInicial(), sender);
+            OpenChildForm(new TelaInicial(despesas,receitas), sender);
             ActiveButton(sender);
         }
 
@@ -122,7 +122,7 @@ namespace ControleTeste
 
         private void btnMovimentacoes_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new CtrlMovimentacoes(despesas, receitas, new CalculosReceita(receitas)), sender);
+            OpenChildForm(new CtrlMovimentacoes(despesas, receitas), sender);
             ActiveButton(sender);
         }
 

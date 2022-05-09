@@ -13,15 +13,12 @@ namespace ControleTeste.Telas
         private List<Despesa> Despesas = new List<Despesa>();
         private List<Receita> Receitas = new List<Receita>();
 
-        CalculosReceita CalculosReceita;
-
-        public CtrlMovimentacoes(List<Despesa> despesas, List<Receita> receitas, CalculosReceita calculosReceita)
+        public CtrlMovimentacoes(List<Despesa> despesas, List<Receita> receitas)
         {
             InitializeComponent();
             CarregarTema();
             Despesas = despesas;
             Receitas = receitas;
-            CalculosReceita = calculosReceita;
             rbtnTodos.Checked = true;
 
         }
@@ -30,6 +27,7 @@ namespace ControleTeste.Telas
         {
             CarregarTema();
             CarregarLista();
+          
         }
         private void CarregarTema()
         {
@@ -82,7 +80,9 @@ namespace ControleTeste.Telas
             if (rbtnTodos.Checked)
             {
                 CarregarLista();
+                cbbCategoria.Items.Clear();
             }
+
         }
 
         private void rbtnReceitas_CheckedChanged(object sender, EventArgs e)
@@ -124,8 +124,14 @@ namespace ControleTeste.Telas
             else if (rbtnReceitas.Checked)
             {
                 List<Receita> filtro = Receitas.FindAll(x => x.Categoria == (CategoriasReceitas)cbbCategoria.SelectedIndex);
+                foreach (Receita item in filtro)
+                {
+                    ltbMovimentacoes.Items.Add(item);
+                }
             }
            
         }
+
+       
     }
 }

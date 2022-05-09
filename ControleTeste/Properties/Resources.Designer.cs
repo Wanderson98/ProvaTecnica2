@@ -83,6 +83,16 @@ namespace ControleTeste.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dashboard {
+            get {
+                object obj = ResourceManager.GetObject("dashboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Despesas {
             get {
                 object obj = ResourceManager.GetObject("Despesas", resourceCulture);
@@ -116,6 +126,16 @@ namespace ControleTeste.Properties {
         internal static System.Drawing.Bitmap ImagemTodos {
             get {
                 object obj = ResourceManager.GetObject("ImagemTodos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_ok_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("logo-ok-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

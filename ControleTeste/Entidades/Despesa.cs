@@ -31,6 +31,12 @@ namespace ControleTeste.Entidades
 
         }
 
+        public static List<Despesa> Buscar(List<Despesa> despesas, string nome)
+        {
+            List<Despesa> list = despesas.FindAll(x => x.Nome.Contains(nome));
+            return list;
+        }
+
         public override string ToString()
         {
             return $"{Nome} - Data: {Data.ToString("dd/MM/yyyy")} - Valor R$ {Valor:F2} - Categoria {Categoria}";

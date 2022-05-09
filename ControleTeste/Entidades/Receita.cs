@@ -31,6 +31,12 @@ namespace ControleTeste.Entidades
             receitas[index].Nome = nome;
 
         }
+        
+        public static List<Receita> Buscar(List<Receita> receitas, string nome)
+        {
+            List<Receita> receitaResultado = receitas.FindAll(x => x.Nome.Contains(nome));
+            return receitaResultado;
+        }
         public override string ToString()
         {
             return $"{Nome} - Data: {Data.ToString("dd/MM/yyyy")} - Valor R$ {Valor:F2} - Categoria {Categoria}";
