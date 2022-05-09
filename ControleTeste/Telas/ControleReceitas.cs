@@ -51,23 +51,32 @@ namespace ControleTeste.Telas
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("Confirmar Inclusão ?", "Inserir", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
+            try
             {
-                CategoriasReceitas categoria = (CategoriasReceitas)cbbCategorias.SelectedIndex;
+                DialogResult = MessageBox.Show("Confirmar Inclusão ?", "Inserir", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    CategoriasReceitas categoria = (CategoriasReceitas)cbbCategorias.SelectedIndex;
 
-                double valor = double.Parse(txtValor.Text);
-                Receita receita = new Receita(txtNomeReceita.Text, dttReceita.Value, valor, categoria);
-                Receita.Adicionar(Receitas, receita);
-                btnRemover.Enabled = true;
-                btnAtualizar.Enabled = true;
-                btnSelecionar.Enabled = true;
-                btnBuscar.Enabled = true;
+                    double valor = double.Parse(txtValor.Text);
+                    Receita receita = new Receita(txtNomeReceita.Text, dttReceita.Value, valor, categoria);
+                    Receita.Adicionar(Receitas, receita);
+                    btnRemover.Enabled = true;
+                    btnAtualizar.Enabled = true;
+                    btnSelecionar.Enabled = true;
+                    btnBuscar.Enabled = true;
+                }
+                CarregarLista();
+                LimparCampos();
             }
-            CarregarLista();
-            LimparCampos();
-            
-           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
+
+
+
 
 
         }
@@ -90,33 +99,48 @@ namespace ControleTeste.Telas
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("Tem certeza que deseja remover ?", "Exclusão", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
+            try
             {
-                Receita receita = ltbReceitas.SelectedItem as Receita;
-                Receita.Remover(Receitas, receita);
+                DialogResult = MessageBox.Show("Tem certeza que deseja remover ?", "Exclusão", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    Receita receita = ltbReceitas.SelectedItem as Receita;
+                    Receita.Remover(Receitas, receita);
+                }
+
+                CarregarLista();
             }
-            
-            CarregarLista();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("Confirmar Alteração ?", "Atualizar", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
+            try
             {
-                int index = ltbReceitas.SelectedIndex;
-                string nome = txtNomeReceita.Text;
-                CategoriasReceitas categorias = (CategoriasReceitas)cbbCategorias.SelectedIndex;
-                DateTime data = dttReceita.Value;
-                double valor = double.Parse(txtValor.Text);
+                DialogResult = MessageBox.Show("Confirmar Alteração ?", "Atualizar", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    int index = ltbReceitas.SelectedIndex;
+                    string nome = txtNomeReceita.Text;
+                    CategoriasReceitas categorias = (CategoriasReceitas)cbbCategorias.SelectedIndex;
+                    DateTime data = dttReceita.Value;
+                    double valor = double.Parse(txtValor.Text);
 
-                Receita.Atualizar(Receitas, index, nome, categorias, valor, data);
+                    Receita.Atualizar(Receitas, index, nome, categorias, valor, data);
+                }
+
+                CarregarLista();
+                LimparCampos();
             }
-           
-            CarregarLista();
-            LimparCampos();
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
         }
 
         private void ltbReceitas_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,20 +178,30 @@ namespace ControleTeste.Telas
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            List<Receita> lista = Receita.Buscar(Receitas, txtBusca.Text);
-            if(lista.Count < 1)
+            try
             {
-                MessageBox.Show("Nenhuma Receita Encontrada");
-            }
-            else
-            {
-                ltbReceitas.Items.Clear();
-                foreach (Receita item in lista)
+                List<Receita> lista = Receita.Buscar(Receitas, txtBusca.Text);
+                if (lista.Count < 1)
                 {
-                    ltbReceitas.Items.Add(item);
+                    MessageBox.Show("Nenhuma Receita Encontrada");
                 }
-                txtBusca.Text = null;
+                else
+                {
+                    ltbReceitas.Items.Clear();
+                    foreach (Receita item in lista)
+                    {
+                        ltbReceitas.Items.Add(item);
+                    }
+                    txtBusca.Text = null;
+                }
             }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
+
         }
 
         private void ltbReceitas_SelectedIndexChanged_1(object sender, EventArgs e)

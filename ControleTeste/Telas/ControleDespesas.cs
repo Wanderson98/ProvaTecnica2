@@ -9,7 +9,7 @@ namespace ControleTeste.Telas
 {
     public partial class ControleDespesas : Form
     {
-       private List<Despesa> Despesas = new List<Despesa>();
+        private List<Despesa> Despesas = new List<Despesa>();
         public ControleDespesas(List<Despesa> despesas)
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace ControleTeste.Telas
             }
             CarregarTema();
             CarregarLista();
-            if(Despesas.Count <= 0)
+            if (Despesas.Count <= 0)
             {
                 btnRemover.Enabled = false;
                 btnAtualizar.Enabled = false;
@@ -33,7 +33,6 @@ namespace ControleTeste.Telas
                 btnBuscar.Enabled = false;
             }
 
-          
         }
         private void CarregarTema()
         {
@@ -57,6 +56,7 @@ namespace ControleTeste.Telas
             {
                 ltbDespesas.Items.Add(item);
             }
+
         }
         private void LimparCampos()
         {
@@ -68,28 +68,45 @@ namespace ControleTeste.Telas
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("Tem certeza que deseja remover ?", "Exclusão", MessageBoxButtons.OKCancel);
-            if(DialogResult == DialogResult.OK)
+            try
             {
-                Despesa despesa = ltbDespesas.SelectedItem as Despesa;
-                Despesa.Remover(Despesas, despesa);
-                CarregarLista();
+                DialogResult = MessageBox.Show("Tem certeza que deseja remover ?", "Exclusão", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    Despesa despesa = ltbDespesas.SelectedItem as Despesa;
+                    Despesa.Remover(Despesas, despesa);
+                    CarregarLista();
+                }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
+
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            DialogResult = MessageBox.Show("Confirmar Alteração ?", "Atualizar", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
+            try
             {
-                int index = ltbDespesas.SelectedIndex;
-                string nome = txtNomeDespesa.Text;
-                CategoriasDespesas categorias = (CategoriasDespesas)cbbCategorias.SelectedIndex;
-                DateTime data = dttDespesa.Value;
-                double valor = double.Parse(txtValor.Text);
-                Despesa.Atualizar(Despesas, index, nome, categorias, valor, data);
-                CarregarLista();
+                DialogResult = MessageBox.Show("Confirmar Alteração ?", "Atualizar", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    int index = ltbDespesas.SelectedIndex;
+                    string nome = txtNomeDespesa.Text;
+                    CategoriasDespesas categorias = (CategoriasDespesas)cbbCategorias.SelectedIndex;
+                    DateTime data = dttDespesa.Value;
+                    double valor = double.Parse(txtValor.Text);
+                    Despesa.Atualizar(Despesas, index, nome, categorias, valor, data);
+                    CarregarLista();
+                    LimparCampos();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
                 LimparCampos();
             }
         }
@@ -103,7 +120,59 @@ namespace ControleTeste.Telas
             cbbCategorias.SelectedIndex = (int)despesa.Categoria;
         }
 
-        private void ltbDespesas_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult = MessageBox.Show("Confirmar Inclusão ?", "Inserir", MessageBoxButtons.OKCancel);
+                if (DialogResult == DialogResult.OK)
+                {
+                    CategoriasDespesas categoria = (CategoriasDespesas)cbbCategorias.SelectedIndex;
+
+                    double valor = -double.Parse(txtValor.Text);
+                    Despesa despesa = new Despesa(txtNomeDespesa.Text, dttDespesa.Value, valor, categoria);
+                    Despesa.Adicionar(Despesas, despesa);
+                    btnRemover.Enabled = true;
+                    btnAtualizar.Enabled = true;
+                    btnSelecionar.Enabled = true;
+                    btnBuscar.Enabled = true;
+                }
+                CarregarLista();
+                LimparCampos();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+                LimparCampos();
+            }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            List<Despesa> despesas = Despesa.Buscar(Despesas, txtBusca.Text);
+            if (despesas.Count < 1)
+            {
+                MessageBox.Show("Nenhuma Despesa Encontrada");
+            }
+            else
+            {
+                ltbDespesas.Items.Clear();
+                foreach (Despesa despesa in despesas)
+                {
+                    ltbDespesas.Items.Add(despesa);
+                }
+                txtBusca.Text = null;
+            }
+        }
+
+        private void ltbDespesas_MouseDoubleClick_1(object sender, MouseEventArgs e)
         {
             Despesa despesa = ltbDespesas.SelectedItem as Despesa;
             txtNomeDespesa.Text = despesa.Nome;
@@ -117,56 +186,18 @@ namespace ControleTeste.Telas
             btnAdicionar.Enabled = false;
         }
 
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparCampos();
-        }
-
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            DialogResult = MessageBox.Show("Confirmar Inclusão ?", "Inserir", MessageBoxButtons.OKCancel);
-            if (DialogResult == DialogResult.OK)
-            {
-                CategoriasDespesas categoria = (CategoriasDespesas)cbbCategorias.SelectedIndex;
-
-                double valor = -double.Parse(txtValor.Text);
-                Despesa despesa = new Despesa(txtNomeDespesa.Text, dttDespesa.Value, valor, categoria);
-                Despesa.Adicionar(Despesas, despesa);
-                btnRemover.Enabled = true;
-                btnAtualizar.Enabled = true;
-                btnSelecionar.Enabled = true;
-                btnBuscar.Enabled = true;
-            }
-            CarregarLista();
-            LimparCampos();
-
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            List<Despesa> despesas = Despesa.Buscar(Despesas, txtBusca.Text);
-            if (despesas.Count < 1)
-            {
-                MessageBox.Show("Nenhuma Receita Encontrada");
-            }
-            else
-            {
-                ltbDespesas.Items.Clear();
-                foreach(Despesa despesa in despesas)
-                {
-                    ltbDespesas.Items.Add(despesa);
-                }
-                txtBusca.Text = null;
-            }
-        }
-
-        private void ltbDespesas_SelectedIndexChanged(object sender, EventArgs e)
+        private void ltbDespesas_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             btnRemover.Enabled = true;
             btnAtualizar.Enabled = true;
             btnSelecionar.Enabled = true;
             btnBuscar.Enabled = true;
             btnAdicionar.Enabled = false;
+        }
+
+        private void txtNomeDespesa_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            btnAdicionar.Enabled = true;
         }
     }
 }

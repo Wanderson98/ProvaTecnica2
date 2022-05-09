@@ -1,9 +1,6 @@
 ﻿using ControleTeste.Entidades;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControleTeste.Servicos
 {
@@ -11,18 +8,18 @@ namespace ControleTeste.Servicos
     {
         private List<Receita> Receitas = new List<Receita>();
         private List<Despesa> Despesas = new List<Despesa>();
-       
+
 
         public ControleMovimentacoes(List<Receita> receitas, List<Despesa> despesas)
         {
             Receitas = receitas;
             Despesas = despesas;
-           
+
         }
 
         public List<Receita> BuscaReceita7Dias()
         {
-            List<Receita> receitas = Receitas.FindAll(x=> x.Data >= DateTime.Now.AddDays(-7));
+            List<Receita> receitas = Receitas.FindAll(x => x.Data >= DateTime.Now.AddDays(-7));
             return receitas;
         }
 

@@ -3,18 +3,13 @@ using ControleTeste.Entidades.Enums;
 using ControleTeste.Servicos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ControleTeste.Telas
 {
     public partial class TelaInicial : Form
-    {
+    {//atributos
         private List<Despesa> Despesas = new List<Despesa>();
         private List<Receita> Receitas = new List<Receita>();
         private double valorTotal;
@@ -22,7 +17,7 @@ namespace ControleTeste.Telas
         private double valorReceita;
         private ControleMovimentacoes controle;
         string[] filtro = { "Todos", "7 dias", "Este Mês" };
-
+        //construtor
         public TelaInicial(List<Despesa> despesas, List<Receita> receitas)
         {
             InitializeComponent();
@@ -31,6 +26,7 @@ namespace ControleTeste.Telas
             CarregarTema();
 
         }
+        //carregar o tema
         private void CarregarTema()
         {
             foreach (Control btns in this.Controls)
@@ -45,11 +41,7 @@ namespace ControleTeste.Telas
                 }
             }
         }
-        private void btnHoje_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //config inicial 
         private void TelaInicial_Load(object sender, EventArgs e)
         {
             foreach (var item in filtro)
@@ -57,16 +49,7 @@ namespace ControleTeste.Telas
                 comboBox1.Items.Add(item);
             }
             comboBox1.SelectedIndex = 0;
-
-
             CarregarTema();
-            //CalcularValorTotal(Receitas,Despesas);
-            //CalcularTotalDespesa(Despesas);
-            //CalcularTotalReceita(Receitas);
-            //CarregarValores();
-
-
-
             panelValorTotal.BackColor = Temas.ChangeColorBrightness(Temas.CorPrimaria, 0.8);
             panelValorReceita.BackColor = Temas.ChangeColorBrightness(Temas.CorPrimaria, 0.8);
             panelValorDespesa.BackColor = Temas.ChangeColorBrightness(Temas.CorPrimaria, 0.8);
@@ -75,11 +58,11 @@ namespace ControleTeste.Telas
 
         private void CalcularValorTotal(List<Receita> receita, List<Despesa> despesa)
         {
-            foreach(Receita receit in receita)
+            foreach (Receita receit in receita)
             {
                 valorTotal += receit.Valor;
             }
-            foreach(Despesa despes in despesa)
+            foreach (Despesa despes in despesa)
             {
                 valorTotal += despes.Valor;
             }
@@ -107,6 +90,8 @@ namespace ControleTeste.Telas
                 CalcularValorTotal(Receitas, Despesas);
                 CalcularTotalDespesa(Despesas);
                 CalcularTotalReceita(Receitas);
+                CarregarGraficoReceita(Receitas);
+                CarregarGraficoDespesas(Despesas);
                 CarregarValores();
             }
             else if (comboBox1.SelectedIndex == 1)
@@ -118,8 +103,11 @@ namespace ControleTeste.Telas
                 CalcularValorTotal(receita, despesa);
                 CalcularTotalDespesa(despesa);
                 CalcularTotalReceita(receita);
+                CarregarGraficoReceita(receita);
+                CarregarGraficoDespesas(despesa);
                 CarregarValores();
-            } else if (comboBox1.SelectedIndex == 2)
+            }
+            else if (comboBox1.SelectedIndex == 2)
             {
                 ResetValores();
                 controle = new ControleMovimentacoes(Receitas, Despesas);
@@ -128,6 +116,8 @@ namespace ControleTeste.Telas
                 CalcularValorTotal(receita, despesa);
                 CalcularTotalDespesa(despesa);
                 CalcularTotalReceita(receita);
+                CarregarGraficoReceita(receita);
+                CarregarGraficoDespesas(despesa);
                 CarregarValores();
             }
         }
@@ -158,6 +148,43 @@ namespace ControleTeste.Telas
             valorTotal = 0;
             valorReceita = 0;
             valorDespesas = 0;
+        }
+
+        private void CarregarGraficoReceita(List<Receita> receitas)   
+        {
+            grafReceita.Series.Clear();
+            string[] rece = Enum.GetNames(typeof(CategoriasReceitas));
+            foreach (string recei in rece)
+            {
+                grafReceita.Series.Add(recei);
+            }
+            for (int i = 0; i < receitas.Count; i++)
+            {
+                grafReceita.Series[receitas[i].Categoria.ToString()].Points.AddXY("Receitas", receitas[i].Valor);
+                
+            }
+          
+        }
+        private void CarregarGraficoDespesas(List<Despesa> despesas)
+        {
+            grafDespesa.Series.Clear();
+    
+            string[] rece = Enum.GetNames(typeof(CategoriasDespesas));
+            foreach (string recei in rece)
+            {
+                grafDespesa.Series.Add(recei.Replace("_", " "));
+            }
+            for (int i = 0; i < despesas.Count; i++)
+            {
+                grafDespesa.Series[despesas[i].Categoria.ToString()].Points.AddXY("Despesas", (despesas[i].Valor * -1));
+
+            }
+
+        }
+
+        private void grafReceita_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

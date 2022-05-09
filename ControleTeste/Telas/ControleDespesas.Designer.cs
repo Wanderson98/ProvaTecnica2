@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.ltbDespesas = new System.Windows.Forms.ListBox();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBusca = new System.Windows.Forms.TextBox();
+            this.ltbDespesas = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnLimpar
@@ -56,18 +56,6 @@
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // ltbDespesas
-            // 
-            this.ltbDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ltbDespesas.FormattingEnabled = true;
-            this.ltbDespesas.ItemHeight = 24;
-            this.ltbDespesas.Location = new System.Drawing.Point(27, 135);
-            this.ltbDespesas.Name = "ltbDespesas";
-            this.ltbDespesas.Size = new System.Drawing.Size(543, 268);
-            this.ltbDespesas.TabIndex = 36;
-            this.ltbDespesas.SelectedIndexChanged += new System.EventHandler(this.ltbDespesas_SelectedIndexChanged);
-            this.ltbDespesas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ltbDespesas_MouseDoubleClick);
             // 
             // btnSelecionar
             // 
@@ -181,6 +169,7 @@
             this.txtNomeDespesa.Name = "txtNomeDespesa";
             this.txtNomeDespesa.Size = new System.Drawing.Size(237, 29);
             this.txtNomeDespesa.TabIndex = 25;
+            this.txtNomeDespesa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtNomeDespesa_MouseDoubleClick);
             // 
             // label1
             // 
@@ -210,15 +199,27 @@
             this.txtBusca.Size = new System.Drawing.Size(199, 26);
             this.txtBusca.TabIndex = 38;
             // 
+            // ltbDespesas
+            // 
+            this.ltbDespesas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ltbDespesas.FormattingEnabled = true;
+            this.ltbDespesas.ItemHeight = 24;
+            this.ltbDespesas.Location = new System.Drawing.Point(27, 135);
+            this.ltbDespesas.Name = "ltbDespesas";
+            this.ltbDespesas.Size = new System.Drawing.Size(543, 268);
+            this.ltbDespesas.TabIndex = 40;
+            this.ltbDespesas.SelectedIndexChanged += new System.EventHandler(this.ltbDespesas_SelectedIndexChanged_1);
+            this.ltbDespesas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ltbDespesas_MouseDoubleClick_1);
+            // 
             // ControleDespesas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(738, 461);
+            this.Controls.Add(this.ltbDespesas);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusca);
             this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.ltbDespesas);
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.btnRemover);
@@ -244,7 +245,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.ListBox ltbDespesas;
         private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnRemover;
@@ -259,5 +259,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBusca;
+        private System.Windows.Forms.ListBox ltbDespesas;
     }
 }

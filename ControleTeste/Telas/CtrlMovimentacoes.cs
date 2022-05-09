@@ -1,6 +1,5 @@
 ﻿using ControleTeste.Entidades;
 using ControleTeste.Entidades.Enums;
-using ControleTeste.Servicos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,7 +26,7 @@ namespace ControleTeste.Telas
         {
             CarregarTema();
             CarregarLista();
-          
+
         }
         private void CarregarTema()
         {
@@ -51,7 +50,7 @@ namespace ControleTeste.Telas
             {
                 ltbMovimentacoes.Items.Add(receita);
             }
-            foreach(Despesa despesa in Despesas)
+            foreach (Despesa despesa in Despesas)
             {
                 ltbMovimentacoes.Items.Add(despesa);
             }
@@ -112,26 +111,34 @@ namespace ControleTeste.Telas
 
         private void cbbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ltbMovimentacoes.Items.Clear();
-            if (rbtnDespesa.Checked)
+            try
             {
-                List<Despesa> filtro = Despesas.FindAll(x => x.Categoria == (CategoriasDespesas)cbbCategoria.SelectedIndex);
-                foreach (Despesa item in filtro)
+                ltbMovimentacoes.Items.Clear();
+                if (rbtnDespesa.Checked)
                 {
-                    ltbMovimentacoes.Items.Add(item);
+                    List<Despesa> filtro = Despesas.FindAll(x => x.Categoria == (CategoriasDespesas)cbbCategoria.SelectedIndex);
+                    foreach (Despesa item in filtro)
+                    {
+                        ltbMovimentacoes.Items.Add(item);
+                    }
+                }
+                else if (rbtnReceitas.Checked)
+                {
+                    List<Receita> filtro = Receitas.FindAll(x => x.Categoria == (CategoriasReceitas)cbbCategoria.SelectedIndex);
+                    foreach (Receita item in filtro)
+                    {
+                        ltbMovimentacoes.Items.Add(item);
+                    }
                 }
             }
-            else if (rbtnReceitas.Checked)
+            catch (Exception ex)
             {
-                List<Receita> filtro = Receitas.FindAll(x => x.Categoria == (CategoriasReceitas)cbbCategoria.SelectedIndex);
-                foreach (Receita item in filtro)
-                {
-                    ltbMovimentacoes.Items.Add(item);
-                }
+                MessageBox.Show(ex.Message, "Error");
             }
-           
+
+
         }
 
-       
+
     }
 }

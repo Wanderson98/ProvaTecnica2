@@ -31,7 +31,7 @@ namespace ControleTeste.Entidades
             receitas[index].Nome = nome;
 
         }
-        
+
         public static List<Receita> Buscar(List<Receita> receitas, string nome)
         {
             List<Receita> receitaResultado = receitas.FindAll(x => x.Nome.Contains(nome));
